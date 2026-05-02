@@ -70,7 +70,7 @@ def get_balance(mode: Optional[str] = None) -> dict:
         _update_stored_balance("LIVE", usdt_balance, inr_balance)
 
     converted_usdt = round(inr_balance / rate, 2) if inr_balance else 0.0
-    total_equity = round(usdt_balance + converted_usdt, 2)
+    total_equity = round(usdt_balance if normalized_mode == "LIVE" else usdt_balance + converted_usdt, 2)
     return {
         "mode": normalized_mode,
         "inr_balance": round(inr_balance, 2),
