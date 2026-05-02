@@ -1,7 +1,10 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL
 
 async function request(path, options = {}) {
   try {
+    if (!API_URL) {
+      throw new Error('VITE_API_URL is not configured.')
+    }
     const response = await fetch(`${API_URL}${path}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -32,6 +35,9 @@ export const api = {
   setMode: (mode) => request('/api/settings/mode', { method: 'POST', body: JSON.stringify({ mode }) }),
   balance: (mode) => request(`/api/settings/balance?mode=${mode}`),
   saveBalance: (body) => request('/api/settings/balance', { method: 'POST', body: JSON.stringify(body) }),
+  lossControl: () => request('/api/settings/loss-control'),
+  saveLossControl: (body) => request('/api/settings/loss-control', { method: 'POST', body: JSON.stringify(body) }),
+  resetLoss: () => request('/api/settings/reset-loss', { method: 'POST', body: JSON.stringify({}) }),
   analyzeStrategy: (body) => request('/api/strategy/analyze', { method: 'POST', body: JSON.stringify(body) }),
   exportTradesUrl: (mode = 'PAPER', format = 'csv') => `${API_URL}/api/trades/export?mode=${mode}&format=${format}`,
 }
