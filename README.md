@@ -56,6 +56,7 @@ uvicorn main:app --host 0.0.0.0 --port 10000
 
 The backend includes:
 
+- root-level `.python-version`, `runtime.txt`, `requirements.txt`, and `Procfile` as a fallback if Render is pointed at the repository root
 - `runtime.txt` with `python-3.10.13`
 - `requirements.txt` with stable FastAPI, Pydantic, pandas, and numpy pins
 - `Procfile` with the production Uvicorn command
