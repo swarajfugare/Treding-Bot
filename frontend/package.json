@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
     "lucide-react": "latest",
     "lightweight-charts": "latest"
   },
   "devDependencies": {
+    "vite": "latest",
+    "@vitejs/plugin-react": "latest",
     "tailwindcss": "3.4.17",
     "postcss": "8.5.13",
     "autoprefixer": "10.4.20"
