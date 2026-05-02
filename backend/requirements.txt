@@ -1,7 +1,7 @@
 fastapi==0.95.2
 uvicorn==0.22.0
 pydantic==1.10.13
-pandas==2.0.3
+pandas==1.5.3
 ta==0.10.2
 python-dotenv==1.0.1
 cryptography==41.0.7
