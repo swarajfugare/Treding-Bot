@@ -3,8 +3,8 @@ from ta.momentum import RSIIndicator
 from ta.trend import EMAIndicator, MACD
 from typing import Optional
 
-from backend.database import DB_LOCK, get_connection, normalize_mode, now_iso
-from backend.services.market_service import SYMBOLS, candles
+from database import DB_LOCK, get_connection, normalize_mode, now_iso
+from services.market_service import SYMBOLS, candles
 
 def _env_float(name: str, fallback: float) -> float:
     try:

@@ -2,7 +2,7 @@ import asyncio
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
-from backend.database import (
+from database import (
     DB_LOCK,
     dict_row,
     get_connection,
@@ -14,10 +14,10 @@ from backend.database import (
     set_current_mode,
     set_setting,
 )
-from backend.services.balance_service import adjust_paper_usdt, get_balance
-from backend.services.exchange_service import fetch_open_orders, fetch_open_positions, place_market_order
-from backend.services.market_service import latest_price
-from backend.services.strategy_service import MIN_CONFIDENCE, evaluate_market, scan_market
+from services.balance_service import adjust_paper_usdt, get_balance
+from services.exchange_service import fetch_open_orders, fetch_open_positions, place_market_order
+from services.market_service import latest_price
+from services.strategy_service import MIN_CONFIDENCE, evaluate_market, scan_market
 
 
 class BotManager:

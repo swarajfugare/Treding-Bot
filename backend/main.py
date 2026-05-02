@@ -6,11 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+sys.path.append(str(Path(__file__).resolve().parent))
 
-from backend.database import init_db
-from backend.routes import bot, dashboard, settings
-from backend.services.bot_service import sync_bot_state_from_storage
+from database import init_db
+from routes import bot, dashboard, settings
+from services.bot_service import sync_bot_state_from_storage
 
 app = FastAPI(title="PulseX Trader API", version="1.0.0")
 
