@@ -18,4 +18,6 @@ COPY backend /app/backend
 
 WORKDIR /app/backend
 
+EXPOSE 10000
+
 CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-10000}"]

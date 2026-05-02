@@ -67,6 +67,36 @@ The backend includes:
 
 Do not add `pyproject.toml` or `poetry.lock` unless you intentionally want Render to switch back to Poetry.
 
+If the Render deploy log still says `Using Python version 3.14.3`, that deploy is not using Docker. Create a new Docker service or sync the Blueprint. The Docker build log should show `FROM python:3.10.13-slim`.
+
+## Koyeb Backend Deployment
+
+Koyeb is a good free alternative for this backend because it supports Dockerfile-based web services and has a free web Service.
+
+Control panel setup:
+
+- Create Web Service
+- Select GitHub repository
+- Builder: `Dockerfile`
+- Branch: `main`
+- Dockerfile Path: `./Dockerfile`
+- Exposed Port: `10000`
+- Route: `/`
+
+Environment variables:
+
+```bash
+FERNET_KEY=your_fernet_key
+DATABASE_PATH=./pulsex.db
+PAPER_TRADING=true
+PAPER_BALANCE=10000
+DELTA_API_URL=https://api.india.delta.exchange
+DELTA_USD_INR_RATE=85
+DELTA_FIXED_USD_INR=true
+```
+
+After Koyeb deploys, set your frontend `VITE_API_URL` to the public `.koyeb.app` backend URL.
+
 ## Vercel Frontend Deployment
 
 Set the Vercel root directory to `frontend` and configure:
