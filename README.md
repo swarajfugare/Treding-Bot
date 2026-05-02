@@ -47,20 +47,23 @@ PulseX Trader does not restrict API credentials by local IP. If an exchange acco
 
 ## Render Backend Deployment
 
-Set the Render root directory to `backend`.
+Recommended deployment: use Docker on Render. This bypasses Render's native Python auto-version selection and pins Python to `3.10.13`.
 
-```bash
-pip install -r requirements.txt
-uvicorn main:app --host 0.0.0.0 --port 10000
-```
+Render settings:
+
+- Language: `Docker`
+- Root Directory: leave blank
+- Dockerfile Path: `./Dockerfile`
+- Docker Context: `.`
 
 The backend includes:
 
+- root-level `Dockerfile` and `.dockerignore` for reliable Render Docker deploys
 - root-level `.python-version`, `runtime.txt`, `requirements.txt`, and `Procfile` as a fallback if Render is pointed at the repository root
 - `runtime.txt` with `python-3.10.13`
 - `requirements.txt` with stable FastAPI, Pydantic, pandas, and numpy pins
 - `Procfile` with the production Uvicorn command
-- `render.yaml` forcing pip install from `requirements.txt`
+- `render.yaml` configured for Docker deployment
 
 Do not add `pyproject.toml` or `poetry.lock` unless you intentionally want Render to switch back to Poetry.
 
