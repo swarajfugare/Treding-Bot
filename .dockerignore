@@ -1,0 +1,9 @@
+.git
+.DS_Store
+backend/.env
+backend/.venv
+backend/pulsex.db
+backend/__pycache__
+backend/**/__pycache__
+frontend/node_modules
+frontend/dist
