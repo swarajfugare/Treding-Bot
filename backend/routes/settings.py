@@ -20,7 +20,7 @@ async def read_credentials() -> dict:
 
 
 @router.post("/credentials")
-async def write_credentials(payload: dict[str, Any] = Body(default_factory=dict)) -> dict:
+async def write_credentials(payload: Optional[dict[str, Any]] = Body(None)) -> dict:
     try:
         api_key, api_secret, error = normalize_credentials(payload or {})
         if error:
@@ -31,7 +31,7 @@ async def write_credentials(payload: dict[str, Any] = Body(default_factory=dict)
 
 
 @router.post("/credentials/test")
-async def check_credentials(payload: dict[str, Any] = Body(default_factory=dict)) -> dict:
+async def check_credentials(payload: Optional[dict[str, Any]] = Body(None)) -> dict:
     try:
         return test_credentials(payload or {})
     except Exception as exc:

@@ -20,7 +20,6 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://10.54.50.228:5173",
-        "https://treding-bot-verse.vercel.app",
         "*",
     ],
     allow_credentials=True,

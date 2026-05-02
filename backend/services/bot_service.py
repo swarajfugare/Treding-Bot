@@ -299,8 +299,8 @@ def open_trade_from_decision(decision: dict, mode: Optional[str] = None) -> Opti
     price = latest_price(decision["coin"])
     quantity = allocated / price
     side = decision["signal"]
-    stop_loss = price * (0.995 if side == "BUY" else 1.005)
-    take_profit = price * (1.01 if side == "BUY" else 0.99)
+    stop_loss = float(decision.get("stop_loss") or price * (0.985 if side == "BUY" else 1.015))
+    take_profit = float(decision.get("take_profit") or price * (1.03 if side == "BUY" else 0.97))
     timestamp = now_iso()
 
     if normalized_mode == "LIVE":

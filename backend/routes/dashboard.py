@@ -77,8 +77,9 @@ async def export_trades(mode: Optional[str] = None, format: str = "csv"):
 
 
 @router.post("/strategy/analyze")
-async def analyze_strategy_upload(payload: dict = Body(default_factory=dict)) -> dict:
+async def analyze_strategy_upload(payload: Optional[dict] = Body(None)) -> dict:
     try:
+        payload = payload or {}
         filename = str(payload.get("filename") or "trades.csv")
         content = str(payload.get("content") or "")
         return analyze_uploaded_trades(filename, content)
